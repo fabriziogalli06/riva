@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riva.bot-fabri.uk - Home</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #08080a; 
+            color: #f5f5f7; 
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            /* Sfondo con immagine "backgroundriva.jpg" e sfumatura scura */
+            background-image: linear-gradient(rgba(8, 8, 10, 0.75), rgba(8, 8, 10, 0.85)), url('backgroundriva.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .main-content {
+            flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 40px 20px; width: 100%; max-width: 1200px; margin: 0 auto;
+        }
+
+        /* Logo personalizzato */
+        .logo-large { 
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 36px; font-weight: 600; cursor: default;
+            letter-spacing: -0.5px; margin-bottom: 40px;
+        }
+        .logo-large .riva { 
+            background: linear-gradient(90deg, #4ade80, #16a34a); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; 
+        }
+        .logo-large .uk-ext {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;
+        }
+
+        /* Bottone Report */
+        .report-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 18px 40px; border-radius: 30px; font-size: 16px; font-weight: 700;
+            text-decoration: none; color: white; transition: all 0.3s ease;
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+            margin-bottom: 60px;
+        }
+        .report-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.5);
+            filter: brightness(1.1);
+        }
+
+        /* Box informativo */
+        .info-box {
+            font-size: 14px; color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px; border-radius: 20px;
+            margin-top: 20px; text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="logo-large"><span class="riva">Riva</span>.bot-fabri<span class="uk-ext">.uk</span></div>
+        
+        <a href="https://drive.google.com/drive/folders/1nJqBKaTXcNUc_PAVY2vpqxDjiwto-Pgy?usp=sharing" class="report-btn">Vai ai Report</a>
+        
+        <div class="info-box">nuovo report disponibile ogni lunedì 2am</div>
+    </div>
+</body>
+</html>
