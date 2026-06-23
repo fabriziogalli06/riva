@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report di Qualifica Lead – Fonderia Ferrari S.r.l.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            background: #f4f6f9;
+            color: #1a1a2e;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f1b2d 0%, #1c315e 100%);
+            color: #fff;
+            padding: 32px 40px;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+        .header .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header .subtitle span {
+            background: rgba(255,255,255,0.12);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .content {
+            padding: 36px 40px 40px;
+        }
+        .section {
+            margin-bottom: 36px;
+        }
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1c315e;
+            border-left: 5px solid #2a6b9f;
+            padding-left: 14px;
+            margin-bottom: 18px;
+        }
+        .lead-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .lead-table td {
+            padding: 10px 12px;
+            vertical-align: top;
+            border-bottom: 1px solid #e8ecf1;
+        }
+        .lead-table td:first-child {
+            font-weight: 600;
+            width: 180px;
+            color: #3a4a6b;
+        }
+        .lead-table td:last-child {
+            color: #1a1a2e;
+        }
+        .score-box {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            background: #f0f3f8;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin: 12px 0 8px;
+        }
+        .score-value {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #1c315e;
+            line-height: 1;
+        }
+        .score-label {
+            font-size: 0.95rem;
+            color: #4a5a7a;
+            max-width: 500px;
+        }
+        .pain-list {
+            list-style: none;
+            padding: 0;
+        }
+        .pain-list li {
+            padding: 12px 16px 12px 20px;
+            border-left: 4px solid #d9534f;
+            background: #fdf2f2;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+            line-height: 1.4;
+        }
+        .pain-list li strong {
+            color: #b52b27;
+        }
+        .highlight-box {
+            background: #e7f0f9;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-top: 14px;
+            border-left: 5px solid #2a6b9f;
+        }
+        .highlight-box p {
+            margin-bottom: 6px;
+        }
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+        .roi-note {
+            background: #fef6e6;
+            border-left: 4px solid #f0ad4e;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 14px 0;
+            font-size: 0.95rem;
+        }
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 14px 0;
+        }
+        .data-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px 18px;
+            border: 1px solid #e2e8f0;
+        }
+        .data-card .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #5a6d8a;
+            margin-bottom: 4px;
+        }
+        .data-card .value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1c315e;
+        }
+        .data-card .note {
+            font-size: 0.8rem;
+            color: #6b7e9a;
+            margin-top: 4px;
+        }
+        .pitch-box {
+            background: #1c315e;
+            color: #fff;
+            border-radius: 12px;
+            padding: 22px 28px;
+            margin-top: 10px;
+        }
+        .pitch-box p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .pitch-box .highlight {
+            color: #ffd966;
+            font-weight: 600;
+        }
+        .pitch-box .small-note {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+        .contact-info {
+            background: #f0f3f8;
+            border-radius: 10px;
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .contact-info .web {
+            font-weight: 500;
+        }
+        .contact-info .web a {
+            color: #2a6b9f;
+            text-decoration: none;
+        }
+        .contact-info .web a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 0.8rem;
+            color: #7a8ba8;
+            border-top: 1px solid #e0e6ed;
+            background: #f9fbfd;
+        }
+        @media (max-width: 600px) {
+            .header, .content { padding: 24px 20px; }
+            .header h1 { font-size: 1.4rem; }
+            .score-box { flex-direction: column; align-items: flex-start; }
+            .lead-table td:first-child { width: 130px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Report di Qualifica Lead</h1>
+            <div class="subtitle">
+                <span>Fonderia Ferrari S.r.l.</span>
+                <span>Data Analisi: 28/03/2026</span>
+                <span>Consulente: Riva Trade & Service – Senior Technical Consultant</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- SEZIONE 1: DATI LEAD -->
+            <div class="section">
+                <div class="section-title">Dati Lead</div>
+                <table class="lead-table">
+                    <tr>
+                        <td>Ragione Sociale</td>
+                        <td><strong>Fonderia Ferrari S.r.l.</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Sito Web</td>
+                        <td><a href="https://www.fonderiaferrari.it" target="_blank" style="color:#2a6b9f;">www.fonderiaferrari.it</a></td>
+                    </tr>
+                    <tr>
+                        <td>Settore</td>
+                        <td>Fonderia di pressofusione alluminio</td>
+                    </tr>
+                    <tr>
+                        <td>Stabilimento</td>
+                        <td>Turbigo (MI), Italia</td>
+                    </tr>
+                    <tr>
+                        <td>Attività Principale</td>
+                        <td>Pressofusione di leghe di alluminio per componenti industriali e automotive. Produzione di grandi volumi di sfridi di pressofusione (materozze, canali, sbavature) e scarti di lavorazione meccanica (fresatura, tornitura). Utilizzo di fluidi lubrorefrigeranti nelle lavorazioni complementari.</td>
+                    </tr>
+                </table>
+                <div style="margin-top:12px; font-size:0.9rem; color:#5a6d8a;">
+                    <em>Nota: Nel lead originale non sono stati forniti indirizzo e-mail o numeri di telefono. Il contatto principale è il sito web aziendale.</em>
+                </div>
+            </div>
+
+            <!-- SEZIONE 2: LEAD SCORE -->
+            <div class="section">
+                <div class="section-title">Lead Score</div>
+                <div class="score-box">
+                    <div class="score-value">85 / 100</div>
+                    <div class="score-label">
+                        <strong>Alto potenziale di vendita</strong><br>
+                        Criteri: grandi volumi di sfridi e trucioli (pressofusione + meccanica), presenza di fluidi lubrorefrigeranti (recupero olio), sede in Italia (accesso a iperammortamento), attività di rifusione interna (beneficio da resa metallurgica).
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEZIONE 3: ANALISI SITUAZIONE -->
+            <div class="section">
+                <div class="section-title">Analisi Situazione</div>
+                <p style="line-height:1.6;">
+                    Oggi Fonderia Ferrari gestisce separatamente i due flussi di scarto: gli sfridi di pressofusione (materozze, canali, sbavature) vengono raccolti e in parte reimmessi al forno, mentre i trucioli di lavorazione meccanica (fresatura e tornitura), impregnati di lubrorefrigeranti, sono verosimilmente stoccati e smaltiti come rifiuto o inviati a fonderia terza. Non emerge l’utilizzo di sistemi di bricchettatura o centrifugazione. Il recupero dell’olio da taglio contenuto nei trucioli non viene attualmente valorizzato, e la resa metallurgica sui trucioli sfusi è tipicamente inferiore (≤92%) a causa dell’alta superficie specifica che favorisce l’ossidazione in forno. I grandi volumi trattati (stabilimento di pressofusione automotive) rendono critica l’ottimizzazione del ciclo.
+                </p>
+            </div>
+
+            <!-- SEZIONE 4: PAIN POINT -->
+            <div class="section">
+                <div class="section-title">Pain Point Identificati</div>
+                <ul class="pain-list">
+                    <li>
+                        <strong>Perdita di resa metallurgica sui trucioli sfusi</strong> – L’elevata superficie ossidata dei trucioli riduce il recupero di metallo in forno rispetto a un bricchetto denso (resa attuale stimata 90–92% vs 97% ottenibile con bricchettatura).
+                    </li>
+                    <li>
+                        <strong>Mancato recupero dell’olio da taglio</strong> – I fluidi lubrorefrigeranti (olio intero o emulsione) contenuti nei trucioli vengono smaltiti o bruciati in forno, con costi di smaltimento e perdita economica. Il recupero può superare il 95% con le presse RUF.
+                    </li>
+                    <li>
+                        <strong>Disefficienza logistica e di stoccaggio</strong> – Trucioli sfusi e sfridi occupano volumi elevati, aumentano i costi di movimentazione e stoccaggio. La bricchettatura riduce il volume fino all’80%.
+                    </li>
+                    <li>
+                        <strong>Costi energetici per rifusione di materiale umido o oleoso</strong> – Il contenuto di umidità e olio nei trucioli aumenta il consumo energetico del forno e le emissioni.
+                    </li>
+                    <li>
+                        <strong>Opportunità fiscale inespressa</strong> – L’azienda ha sede in Italia e potrebbe beneficiare dell’iperammortamento per l’economia circolare 2026, ma manca un progetto di investimento formalizzato.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- SEZIONE 5: OPPORTUNITÀ SPECIFICA -->
+            <div class="section">
+                <div class="section-title">Opportunità Specifica</div>
+                <div class="highlight-box">
+                    <p><strong>Perché RUF/Erdwich per Fonderia Ferrari?</strong></p>
+                    <p>La pressa bricchettatrice <strong>RUF</strong>, modello RUF 1000 o RUF 1500 (a seconda dei volumi), è la soluzione ideale per trasformare i trucioli di alluminio in bricchetti compatti e asciutti. Il sistema garantisce:</p>
+                    <ul style="margin: 10px 0 4px 20px; line-height: 1.7;">
+                        <li><strong>Resa metallurgica fino al 97%</strong> – grazie alla riduzione della superficie esposta all’ossidazione durante la rifusione.</li>
+                        <li><strong>Recupero dell’olio da taglio fino al 98%</strong> – l’olio viene spremuto, filtrato e può essere riutilizzato nel ciclo produttivo.</li>
+                        <li><strong>Riduzione del volume</strong> – i bricchetti sono densi (≥2,2 g/cm³ contro ≤0,4 g/cm³ dei trucioli) e facili da stoccare, movimentare e caricare in forno.</li>
+                        <li><strong>Integrazione con gli sfridi di pressofusione</strong> – le materozze e le sbavature possono essere triturate con un trituratore <strong>Erdwich ZTS</strong> e poi bricchettate insieme ai trucioli, uniformando il materiale da rifondere.</li>
+                    </ul>
+                    <p style="margin-top:10px;">Per i soli sfridi di pressofusione (pezzi massivi), si può valutare anche la sola triturazione + separazione ferrosa, ma il vero valore aggiunto per Fonderia Ferrari nasce dalla bricchettatura dei trucioli con recupero olio.</p>
+                </div>
+            </div>
+
+            <!-- SEZIONE 6: DATI STIMATI -->
+            <div class="section">
+                <div class="section-title">Dati Stimati</div>
+                <div class="data-grid">
+                    <div class="data-card">
+                        <div class="label">Resa Metallurgica</div>
+                        <div class="value">→ 97%</div>
+                        <div class="note">Bricchetti vs 90–92% trucioli sfusi</div>
+                    </div>
+                    <div class="data-card">
+                        <div class="label">Recupero Olio</div>
+                        <div class="value">≥ 95%</div>
+                        <div class="note">Su olio intero / emulsione concentrata</div>
+                    </div>
+                    <div class="data-card">
+                        <div class="label">Riduzione Volume</div>
+                        <div class="value">fino all’80%</div>
+                        <div class="note">Rispetto a trucioli sfusi</div>
+                    </div>
+                    <div class="data-card">
+                        <div class="label">Risparmio Energetico Forno</div>
+                        <div class="value">10–15%</div>
+                        <div class="note">Meno umidità/olio da evaporare</div>
+                    </div>
+                    <div class="data-card">
+                        <div class="label">Riduzione Costi Smaltimento</div>
+                        <div class="value">variabile</div>
+                        <div class="note">Dipende dal volume annuo di truciolo</div>
+                    </div>
+                </div>
+                <div class="roi-note">
+                    <strong>ROI Recupero Olio:</strong> Considerati i grandi volumi di truciolo prodotti e l’uso di fluidi lubrorefrigeranti, il ritorno sull’investimento per il recupero olio è stimato in <strong>12–18 mesi</strong>. La tecnologia RUF garantisce il massimo recupero possibile per litro trattato; il ROI esatto andrà calcolato sui volumi effettivi e sul costo dell’olio/smaltimento.
+                </div>
+            </div>
+
+            <!-- SEZIONE 7: PITCH COMMERCIALE -->
+            <div class="section">
+                <div class="section-title">Pitch Commerciale Personalizzato</div>
+                <div class="pitch-box">
+                    <p>
+                        <span class="highlight">Fonderia Ferrari, trasformiamo i vostri scarti in un secondo flusso di valore.</span>
+                    </p>
+                    <p>
+                        La pressa bricchettatrice <strong>RUF</strong> vi permette di ottenere una <strong>resa metallurgica del 97%</strong> sui vostri trucioli di alluminio, contro l’attuale 90-92%, e di <strong>recuperare oltre il 95% dell’olio da taglio</strong> contenuto, riutilizzandolo nel ciclo produttivo. Il bricchetto compatto riduce volume e costi logistici, e il materiale asciutto abbassa il consumo energetico del forno.
+                    </p>
+                    <p>
+                        Inoltre, in quanto azienda italiana, potete accedere all’<strong>iperammortamento 2026 per l’economia circolare</strong> (agevolazione fino al 280% del costo dell’investimento, con percentuale precisa legata alla dimensione aziendale e al piano beni strumentali). Questo rende l’investimento in una RUF ancora più conveniente.
+                    </p>
+                    <p>
+                        <strong>Il nostro consiglio:</strong> partiamo da un’analisi dei vostri flussi reali (volume trucioli annuo, tipologia olio, cadenza di produzione) per dimensionare la macchina e calcolare il ROI puntuale. Vi proponiamo un sopralluogo tecnico presso il vostro stabilimento di Turbigo.
+                    </p>
+                    <div class="small-note">
+                        * Le % di iperammortamento indicate sono basate sulla normativa 2026; si consiglia verifica con il consulente fiscale aziendale.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEZIONE 8: CONTATTI -->
+            <div class="section">
+                <div class="section-title">Contatti & Prossimi Passi</div>
+                <div class="contact-info">
+                    <div>
+                        <strong>Lead:</strong> Fonderia Ferrari S.r.l.<br>
+                        <span class="web">🌐 <a href="https://www.fonderiaferrari.it" target="_blank">www.fonderiaferrari.it</a></span>
+                    </div>
+                    <div>
+                        <strong>Referente Riva Trade & Service:</strong> Senior Technical Consultant<br>
+                        <span style="font-size:0.9rem;">(contattare tramite canali aziendali Riva)</span>
+                    </div>
+                </div>
+                <p style="margin-top:12px; font-size:0.9rem; color:#4a5a7a;">
+                    <strong>Azioni suggerite:</strong> 
+                    Inviare email di presentazione con case study simile (fonderia alluminio) e richiesta di sopralluogo tecnico. Preparare offerta preliminare basata su RUF 1000 e trituratore Erdwich ZTS. Allegare scheda dell’iperammortamento 2026.
+                </p>
+            </div>
+
+            <div class="footer">
+                Report generato da Riva Trade & Service – Consulenza Tecnica Senior | Documento riservato | AI-assisted analysis
+            </div>
+        </div>
+    </div>
+</body>
+</html>
