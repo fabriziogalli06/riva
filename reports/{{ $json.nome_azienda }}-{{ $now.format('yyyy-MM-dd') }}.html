@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Qualifica Lead - Riva Trade & Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #eef2f5;
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        .report-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px -12px rgba(0, 20, 30, 0.25);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .report-header {
+            background: linear-gradient(135deg, #0b2a3c 0%, #1d4f6e 100%);
+            padding: 30px 40px 24px 40px;
+            color: white;
+        }
+        .report-header h1 {
+            font-weight: 600;
+            font-size: 1.9rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+        .report-header .sub {
+            font-weight: 400;
+            opacity: 0.8;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .badge-score {
+            background: #facc15;
+            color: #0b2a3c;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 28px 40px;
+            border-bottom: 1px solid #e9edf2;
+        }
+        .section:last-of-type {
+            border-bottom: none;
+        }
+        .section-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1d4f6e;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title span {
+            background: #eef2f5;
+            border-radius: 12px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            color: #1d4f6e;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+        }
+        .info-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #6b7a8a;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .info-value {
+            font-weight: 500;
+            color: #1a2630;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        .info-value a {
+            color: #1d4f6e;
+            text-decoration: none;
+            border-bottom: 1px dashed #b0c4d4;
+        }
+        .info-value a:hover {
+            border-bottom: 1px solid #1d4f6e;
+        }
+        .pain-list {
+            list-style: none;
+            padding: 0;
+        }
+        .pain-list li {
+            padding: 8px 0 8px 28px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>') left center no-repeat;
+            background-size: 18px;
+            margin-bottom: 6px;
+            color: #2d3a47;
+            font-size: 0.95rem;
+        }
+        .highlight-box {
+            background: #f6f9fc;
+            border-left: 4px solid #1d4f6e;
+            padding: 16px 22px;
+            border-radius: 12px;
+            margin: 18px 0 8px 0;
+            font-size: 0.95rem;
+            color: #1f2b36;
+        }
+        .pitch-block {
+            background: #f0f6fa;
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin: 20px 0 0 0;
+            border: 1px solid #dce5ec;
+        }
+        .pitch-block p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .pitch-block strong {
+            color: #0b2a3c;
+        }
+        .table-data {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .table-data th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #5b6f7e;
+            padding: 12px 8px 8px 0;
+            border-bottom: 1px solid #dce5ec;
+        }
+        .table-data td {
+            padding: 12px 8px 12px 0;
+            border-bottom: 1px solid #eaeef3;
+            color: #1f2b36;
+            font-size: 0.95rem;
+        }
+        .table-data tr:last-child td {
+            border-bottom: none;
+        }
+        .contact-info {
+            background: #fafbfc;
+            padding: 16px 28px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border: 1px solid #e2e8ef;
+        }
+        .contact-info span {
+            font-weight: 500;
+        }
+        .footer-note {
+            background: #e7edf3;
+            padding: 16px 40px;
+            font-size: 0.75rem;
+            color: #4a5f6e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 720px) {
+            .section { padding: 20px 20px; }
+            .report-header { padding: 20px 20px; }
+            .grid-2col { grid-template-columns: 1fr; }
+            .report-header .sub { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .badge-score { align-self: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="report-card">
+    <div class="report-header">
+        <h1>Rapporto di Qualifica Lead</h1>
+        <div class="sub">
+            <span>Riva Trade &amp; Service · Consulenza Tecnica Senior</span>
+            <span class="badge-score">Lead Score: <strong>75/100</strong></span>
+        </div>
+    </div>
+
+    <!-- ANALISI SITUAZIONE -->
+    <div class="section">
+        <div class="section-title">
+            📋 Analisi Situazione
+            <span>stato attuale</span>
+        </div>
+        <div class="grid-2col">
+            <div>
+                <div class="info-label">Azienda</div>
+                <div class="info-value">—</div>
+            </div>
+            <div>
+                <div class="info-label">Sito web</div>
+                <div class="info-value">—</div>
+            </div>
+            <div>
+                <div class="info-label">Settore</div>
+                <div class="info-value">—</div>
+            </div>
+            <div>
+                <div class="info-label">Attività</div>
+                <div class="info-value">—</div>
+            </div>
+        </div>
+        <div style="margin-top: 14px; background: #f8fafb; padding: 14px 18px; border-radius: 14px;">
+            <div class="info-label" style="margin-bottom: 6px;">Scenario operativo rilevato</div>
+            <div class="info-value" style="font-weight: 400;">Nessuna descrizione attività fornita. Impossibile determinare il processo produttivo, la tipologia di scarti e i volumi. Si consiglia un approfondimento diretto per profilare il lead.</div>
+        </div>
+    </div>
+
+    <!-- OPPORTUNITÀ SPECIFICA -->
+    <div class="section">
+        <div class="section-title">
+            🎯 Opportunità Specifica
+            <span>perché RUF / Erdwich</span>
+        </div>
+        <p style="margin-bottom: 12px; line-height: 1.6; color: #2d3a47;">In assenza di dati di dettaglio, le soluzioni Riva Trade &amp; Service offrono vantaggi universali per qualsiasi realtà che generi trucioli metallici o scarti di lavorazione:</p>
+        <ul class="pain-list">
+            <li><strong>Bricchettatura RUF</strong> — Trasformazione di trucioli in bricchette dense (+70% di valore rispetto al truciolo sfuso), riduzione volume fino a 15:1, abbattimento costi logistici.</li>
+            <li><strong>Recupero olio</strong> — Separazione del lubrorefrigerante fino al 97% di resa (dato certificato su volumi medi/alti). L'olio recuperato si può riutilizzare o vendere.</li>
+            <li><strong>Resa metallurgica</strong> — Per fonderie: fino al 97% di resa in rifusione. Per tornerie: bricchetto con elevato potere calorifico e nessuna perdita di materiale.</li>
+            <li><strong>Frantumazione Erdwich</strong> — Per scarti voluminosi, motori elettrici, cavi e fanghi: riduzione granulometrica e separazione delle frazioni.</li>
+        </ul>
+    </div>
+
+    <!-- DATI STIMATI + ROI / IPERAMMORTAMENTO -->
+    <div class="section">
+        <div class="section-title">
+            📊 Dati Stimati e Leva Commerciale
+            <span>ROI · Resa · Incentivi</span>
+        </div>
+
+        <div class="grid-2col" style="margin-bottom: 12px;">
+            <div>
+                <div class="info-label">Resa metallurgica (stima cautelativa)</div>
+                <div class="info-value">fino al 97% con bricchettatura RUF<sup>*</sup></div>
+            </div>
+            <div>
+                <div class="info-label">Recupero olio</div>
+                <div class="info-value">Il ROI andrà calcolato sui volumi effettivi, ma la tecnologia RUF garantisce il massimo recupero possibile per litro.</div>
+            </div>
+        </div>
+        <div style="font-size: 0.8rem; color: #5a6f7e; margin: -4px 0 12px 0;"><sup>*</sup> Valore indicativo riferito a bricchette per rifusione in fonderia; per tornerie si valuta il maggior valore di vendita del bricchetto rispetto al truciolo sfuso.</div>
+
+        <div class="highlight-box">
+            <strong>💰 Iperammortamento 2026 (Italia)</strong><br>
+            L'azienda, se italiana, può accedere agli incentivi fiscali per l'economia circolare 2026. La percentuale esatta (fino al 280%) dipende dalla dimensione aziendale e dal piano investimenti. Le presse RUF e i frantumatori Erdwich rientrano pienamente nelle categorie agevolabili (macchine per il recupero di metalli e lubrificanti).
+        </div>
+
+        <div class="pitch-block">
+            <p><strong>🎯 Pitch commerciale sintetico</strong></p>
+            <p>“Con Riva Trade &amp; Service potete valorizzare ogni chilogrammo di truciolo — l’impianto RUF trasforma uno scarto logistico in una risorsa ad alto valore, con recupero d’olio che abbatte i costi di smaltimento. La resa metallurgica supera il 96%, e se siete in Italia l'Iperammortamento 2026 copre fino al 280% del valore dell’investimento. Vogliamo calcolare insieme il vostro ROI effettivo su un impianto pilota?”</p>
+            <p style="margin-bottom: 0; font-size: 0.9rem; color: #3f5566;">— Consulente Tecnico Riva Trade &amp; Service</p>
+        </div>
+    </div>
+
+    <!-- CONTATTI / REFERENZE -->
+    <div class="section" style="border-bottom: none;">
+        <div class="section-title">
+            📞 Contatti e Recapiti
+            <span>lead</span>
+        </div>
+        <div>Nessun contatto diretto disponibile. Si suggerisce di reperire:</div>
+        <div class="contact-info">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px 16px;">
+                <span>Nome azienda:</span><span>—</span>
+                <span>Sito web:</span><span>—</span>
+                <span>Email:</span><span>—</span>
+                <span>Telefono:</span><span>—</span>
+            </div>
+        </div>
+        <div style="margin-top: 12px; font-size: 0.85rem; background: #f2f6fa; padding: 10px 16px; border-radius: 10px;">
+            ⚠️ Il presente report è incompleto a causa dell'assenza di dati anagrafici e descrizione attività. Per un’analisi puntuale si raccomanda un contatto diretto o l'integrazione delle informazioni mancanti.
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-note">
+        <span>Riva Trade &amp; Service – Divisione Tecnica</span>
+        <span>Report generato il 28/03/2026 · Qualifica Lead</span>
+    </div>
+</div>
+</body>
+</html>
